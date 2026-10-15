@@ -9,7 +9,7 @@
           "token": "Jeton"
         },
         "data_description": {
-          "url": "Par exemple http://homeassistant.local:8210"
+          "url": "Adresse et port de MyJotCart (l'add-on utilise le port 8210)"
         }
       },
       "hassio_confirm": {

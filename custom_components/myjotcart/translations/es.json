@@ -9,7 +9,7 @@
           "token": "Token"
         },
         "data_description": {
-          "url": "Por ejemplo http://homeassistant.local:8210"
+          "url": "Dirección y puerto de MyJotCart (el add-on usa el puerto 8210)"
         }
       },
       "hassio_confirm": {

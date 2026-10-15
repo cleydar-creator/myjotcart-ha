@@ -10,13 +10,10 @@ import voluptuous as vol
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
+from homeassistant.helpers.service_info.hassio import HassioServiceInfo
+
 from .api import MyJotCartApi, MyJotCartAuthError, MyJotCartError
 from .const import CONF_TOKEN, CONF_URL, DOMAIN
-
-try:  # HA 2025.1+
-    from homeassistant.helpers.service_info.hassio import HassioServiceInfo
-except ImportError:  # pragma: no cover
-    from homeassistant.components.hassio import HassioServiceInfo
 
 
 class MyJotCartConfigFlow(ConfigFlow, domain=DOMAIN):

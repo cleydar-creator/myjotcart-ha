@@ -19,10 +19,7 @@ from custom_components.myjotcart.const import DOMAIN
 URL, TOKEN, COOKIE = os.environ.get("MJC_URL"), os.environ.get("MJC_TOKEN"), os.environ.get("MJC_COOKIE")
 pytestmark = [pytest.mark.skipif(not URL, reason="needs a running MyJotCart (MJC_URL)")]
 
-try:
-    from homeassistant.helpers.service_info.hassio import HassioServiceInfo
-except ImportError:
-    from homeassistant.components.hassio import HassioServiceInfo
+from homeassistant.helpers.service_info.hassio import HassioServiceInfo
 
 
 async def phone(method, path, json=None):

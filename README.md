@@ -49,3 +49,5 @@ actions:
 ```
 
 Languages: English, Español, Deutsch, Français, Português.
+
+This integration (the Home Assistant connector) is MIT licensed. MyJotCart itself is a separate product.
