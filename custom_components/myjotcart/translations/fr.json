@@ -1,0 +1,48 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connecter MyJotCart",
+        "description": "Utile uniquement si MyJotCart n'est pas apparu tout seul dans « Découverts ». Dans MyJotCart : Paramètres → Home Assistant → Créer un jeton manuellement.",
+        "data": {
+          "url": "Adresse",
+          "token": "Jeton"
+        },
+        "data_description": {
+          "url": "Par exemple http://homeassistant.local:8210"
+        }
+      },
+      "hassio_confirm": {
+        "title": "MyJotCart trouvé",
+        "description": "L'add-on MyJotCart est en marche. Ajouter vos listes de courses à Home Assistant ?"
+      },
+      "reauth_confirm": {
+        "title": "Nouveau jeton",
+        "description": "MyJotCart a refusé le jeton. Créez-en un nouveau dans MyJotCart : Paramètres → Home Assistant.",
+        "data": {
+          "token": "Jeton"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de joindre MyJotCart à cette adresse",
+      "invalid_auth": "Le jeton n'est pas valide"
+    },
+    "abort": {
+      "already_configured": "MyJotCart est déjà configuré",
+      "reauth_successful": "Jeton mis à jour",
+      "cannot_connect": "Impossible de joindre MyJotCart à cette adresse",
+      "invalid_auth": "Le jeton n'est pas valide"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "pending": {
+        "name": "Reste à acheter"
+      },
+      "running_out": {
+        "name": "Bientôt épuisé à la maison"
+      }
+    }
+  }
+}

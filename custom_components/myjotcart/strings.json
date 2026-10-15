@@ -1,0 +1,48 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect MyJotCart",
+        "description": "Only needed if MyJotCart did not appear by itself under Discovered. In MyJotCart: Settings → Home Assistant → Create a token manually.",
+        "data": {
+          "url": "Address",
+          "token": "Token"
+        },
+        "data_description": {
+          "url": "For example http://homeassistant.local:8210"
+        }
+      },
+      "hassio_confirm": {
+        "title": "MyJotCart found",
+        "description": "The MyJotCart add-on is running. Add your shopping lists to Home Assistant?"
+      },
+      "reauth_confirm": {
+        "title": "New token",
+        "description": "MyJotCart rejected the token. Create a new one in MyJotCart: Settings → Home Assistant.",
+        "data": {
+          "token": "Token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach MyJotCart at that address",
+      "invalid_auth": "The token is not valid"
+    },
+    "abort": {
+      "already_configured": "MyJotCart is already set up",
+      "reauth_successful": "Token updated",
+      "cannot_connect": "Cannot reach MyJotCart at that address",
+      "invalid_auth": "The token is not valid"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "pending": {
+        "name": "Pending to buy"
+      },
+      "running_out": {
+        "name": "Running out at home"
+      }
+    }
+  }
+}
