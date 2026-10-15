@@ -10,5 +10,6 @@ def auto_enable_custom_integrations(enable_custom_integrations, socket_enabled):
 
     The plain resolver avoids aiodns' shutdown thread, which the HA test harness reports as lingering.
     """
-    with patch("homeassistant.helpers.aiohttp_client.AsyncResolver", ThreadedResolver):
+    with patch("homeassistant.helpers.aiohttp_client.AsyncResolver", ThreadedResolver), \
+         patch("aiohttp.connector.DefaultResolver", ThreadedResolver):
         yield

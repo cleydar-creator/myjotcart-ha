@@ -5,6 +5,7 @@ Your [MyJotCart](https://github.com/cleydar-creator/myjotcart-addon) shopping li
 - **Every list is a to-do list**: use the standard *To-do list* card on any dashboard, tick items in the shop, add things from the sidebar.
 - **Voice** with Assist: *"Add milk to my Mercadona list"* · *"Añade leche a la lista Mercadona"*.
 - **Live**: what anyone adds from their phone shows up in Home Assistant within a second (and the other way round).
+- **The whole app in a dashboard** with the *MyJotCart* card — at home and from outside (it goes through Home Assistant, like the sidebar panel).
 - **Sensors** for automations: *Pending to buy* (per list in the attributes) and *Running out at home*.
 
 | In Home Assistant | In MyJotCart |
@@ -23,7 +24,16 @@ Your [MyJotCart](https://github.com/cleydar-creator/myjotcart-addon) shopping li
 
 Running MyJotCart outside Home Assistant (Docker, another machine)? Settings → Devices & services → Add integration → MyJotCart, and enter its address (e.g. `http://192.168.1.10:8210`) and a token from MyJotCart → Settings → Home Assistant → *Create a token manually*.
 
-## Dashboard example
+## Dashboard examples
+
+The whole app (lists, home pantry, scanner) — pick **MyJotCart** in *Add card*, or:
+
+```yaml
+type: custom:myjotcart-card
+height: 80vh        # optional; in a "Panel" view it fills the screen
+```
+
+Just one list, with the standard card:
 
 ```yaml
 type: todo-list
