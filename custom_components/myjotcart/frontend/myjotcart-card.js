@@ -5,11 +5,11 @@
 // Without the add-on (MyJotCart on another machine) it shows the direct address instead.
 
 const TEXT = {
-  en: { loading: "Opening MyJotCart…", error: "Can't open MyJotCart", setup: "Set up the MyJotCart integration first." },
-  es: { loading: "Abriendo MyJotCart…", error: "No se puede abrir MyJotCart", setup: "Configura primero la integración MyJotCart." },
-  de: { loading: "MyJotCart wird geöffnet…", error: "MyJotCart kann nicht geöffnet werden", setup: "Richte zuerst die MyJotCart-Integration ein." },
-  fr: { loading: "Ouverture de MyJotCart…", error: "Impossible d'ouvrir MyJotCart", setup: "Configurez d'abord l'intégration MyJotCart." },
-  pt: { loading: "Abrindo o MyJotCart…", error: "Não foi possível abrir o MyJotCart", setup: "Configure primeiro a integração MyJotCart." },
+  en: { loading: "Opening MyJotCart…", error: "Can't open MyJotCart", setup: "Set up the MyJotCart integration first.", desc: "The whole MyJotCart app (lists, home pantry, scanner) in your dashboard — also from outside home." },
+  es: { loading: "Abriendo MyJotCart…", error: "No se puede abrir MyJotCart", setup: "Configura primero la integración MyJotCart.", desc: "La app MyJotCart entera (listas, casa, escáner) en tu panel — también desde fuera de casa." },
+  de: { loading: "MyJotCart wird geöffnet…", error: "MyJotCart kann nicht geöffnet werden", setup: "Richte zuerst die MyJotCart-Integration ein.", desc: "Die ganze MyJotCart-App (Listen, Vorrat, Scanner) im Dashboard — auch von unterwegs." },
+  fr: { loading: "Ouverture de MyJotCart…", error: "Impossible d'ouvrir MyJotCart", setup: "Configurez d'abord l'intégration MyJotCart.", desc: "Toute l'app MyJotCart (listes, garde-manger, scanner) dans votre tableau de bord — même hors de chez vous." },
+  pt: { loading: "Abrindo o MyJotCart…", error: "Não foi possível abrir o MyJotCart", setup: "Configure primeiro a integração MyJotCart.", desc: "O app MyJotCart inteiro (listas, despensa, scanner) no seu painel — também fora de casa." },
 };
 
 class MyJotCartCard extends HTMLElement {
@@ -129,13 +129,23 @@ class MyJotCartCard extends HTMLElement {
   }
 }
 
-if (!customElements.get("myjotcart-card")) {
-  customElements.define("myjotcart-card", MyJotCartCard);
-  window.customCards = window.customCards || [];
+// Home Assistant swaps window.customElements for its own registry while it boots; this file can load before that,
+// so the first registration may get lost (the card picker then spins forever). Register again until it sticks.
+const define = () => {
+  if (!customElements.get("myjotcart-card")) customElements.define("myjotcart-card", MyJotCartCard);
+};
+define();
+window.addEventListener("load", define);
+// Check every 0.5 s during the first minute (slow phones boot later), then stop.
+const timer = setInterval(define, 500);
+setTimeout(() => clearInterval(timer), 60000);
+
+window.customCards = window.customCards || [];
+if (!window.customCards.some((c) => c.type === "myjotcart-card")) {
   window.customCards.push({
     type: "myjotcart-card",
     name: "MyJotCart",
-    description: "The whole MyJotCart app (lists, home pantry, scanner) in your dashboard — also from outside home.",
+    description: (TEXT[(navigator.language || "en").slice(0, 2)] || TEXT.en).desc,
     preview: false,
     documentationURL: "https://github.com/cleydar-creator/myjotcart-ha",
   });
