@@ -2,6 +2,10 @@
 
 Your [MyJotCart](https://github.com/cleydar-creator/myjotcart-addon) shopping lists inside Home Assistant.
 
+<img src="https://raw.githubusercontent.com/cleydar-creator/myjotcart-addon/main/images/home-pantry.png" width="240" alt="MyJotCart home pantry"> <img src="https://raw.githubusercontent.com/cleydar-creator/myjotcart-addon/main/images/shopping-list.png" width="240" alt="MyJotCart shopping list">
+
+> **Add-on or integration?** The [MyJotCart add-on](https://github.com/cleydar-creator/myjotcart-addon) is the app itself — it is the **MyJotCart** entry in the sidebar and keeps your data. This integration is optional: it connects the app to Home Assistant (to-do lists, voice, sensors, dashboard card) and does not add anything to the sidebar.
+
 - **Every list is a to-do list**: use the standard *To-do list* card on any dashboard, tick items in the shop, add things from the sidebar.
 - **Voice** with Assist: *"Add milk to my Mercadona list"* · *"Añade leche a la lista Mercadona"*.
 - **Live**: what anyone adds from their phone shows up in Home Assistant within a second (and the other way round).
