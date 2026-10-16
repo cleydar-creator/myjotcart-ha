@@ -22,11 +22,11 @@ Your [MyJotCart](https://github.com/cleydar-creator/myjotcart-addon) shopping li
 
 ## Install
 
-1. Install the **MyJotCart add-on** first (Settings → Add-ons → Add-on store → ⋮ → Repositories → `https://github.com/cleydar-creator/myjotcart-addon`).
+1. Install the **MyJotCart add-on** first (Settings → Apps → App store → ⋮ → Repositories — *Add-ons → Add-on store* in older versions — → `https://github.com/cleydar-creator/myjotcart-addon`).
 2. HACS → ⋮ → **Custom repositories** → `https://github.com/cleydar-creator/myjotcart-ha`, type **Integration** → install **MyJotCart** → restart Home Assistant.
 3. Settings → Devices & services: **MyJotCart** appears under *Discovered* → **Add**. That's it.
 
-Running MyJotCart outside Home Assistant (Docker, another machine)? Settings → Devices & services → Add integration → MyJotCart, and enter its address (e.g. `http://192.168.1.10:8210`) and a token from MyJotCart → Settings → Home Assistant → *Create a token manually*.
+Running MyJotCart outside Home Assistant (Docker, another machine)? Settings → Devices & services → Add integration → MyJotCart, and enter its address (e.g. `http://192.168.1.10:8210`) and a token from MyJotCart → Settings → Home Assistant → *Advanced options* → *Create a token manually*.
 
 ## Dashboard examples
 
